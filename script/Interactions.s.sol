@@ -6,6 +6,9 @@ import {VRFCoordinatorV2_5Mock} from "@chainlink/contracts/src/v0.8/vrf/mocks/VR
 import {LinkToken} from "../test/mocks/LinkToken.sol";
 import {DevOpsTools} from "lib/foundry-devops/src/DevOpsTools.sol";
 
+
+// This is nothing but instead of manual doing vrf subscription we are automating 
+// Creates subscription
 contract CreateSubscription is Script {
     function createSubscriptionUsingConfig() public returns(uint256, address) {
         HelperConfig helperConfig = new HelperConfig();
@@ -30,6 +33,8 @@ contract CreateSubscription is Script {
         createSubscriptionUsingConfig();
     }
 }
+
+// Adds funds to subscription
 
 contract FundSubscription is Script,CodeConstants {
     uint256 public constant FUND_AMOUNT = 3 ether;
@@ -64,6 +69,7 @@ contract FundSubscription is Script,CodeConstants {
     }
 }
 
+// Add consumer 
 contract AddConsumer is Script{
     function addConsumerUsingConfig(address mostRecentlyDeployed) public{
         HelperConfig helperConfig = new HelperConfig();
